@@ -1,0 +1,43 @@
+﻿@model List<ArchExample.UI.MVC.Models.EmployeeModel>
+
+@{
+    ViewBag.Title = "Stores";
+}
+
+<h2>Store: @ViewBag.StoreName</h2>
+
+<div>
+    <table class="table table-hover table-striped dataTable display compact">
+        <thead class="thead-inverse">
+        <tr>
+            <th>CI</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Hour Payment</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr role="row">
+                    <td>
+                        @item.CI
+                    </td>
+                    <td>
+                        @item.FirstName
+                    </td>
+                    <td>
+                        @item.LastName
+                    </td>
+                    <td>
+                        @item.HourlyPaymentFormatted
+                    </td>
+                    <td>
+                        <a href="/Employees/CalculatePayment?employeeCI=@(item.CI)">Calculate Payment</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

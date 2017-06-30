@@ -1,0 +1,44 @@
+﻿@model ArchExample.UI.MVC.Models.EmployeeModel
+
+@{
+    ViewBag.Title = "Stores";
+}
+
+<h2>Calculate Payment</h2>
+
+<div>
+    @using (Html.BeginForm("CalculatePayment", "Employees", FormMethod.Post, new { role = "form", @class = "form" }))
+    {
+        <div class="form-group">
+            <fieldset>
+                @Html.Hidden("employeeCI", Model.CI)
+                <legend>Employee Data</legend>
+                <div class="form-group">
+                    <label for="CI">CI:</label>
+                    <input type="text" id="CI" name="CI" class="form-control" value="@Model.CI" readonly="readonly" />
+                </div>
+                <div class="form-group">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" name="firstName" class="form-control" value="@Model.FirstName" readonly="readonly"/>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" name="lastName" class="form-control" value="@Model.LastName" readonly="readonly"/>
+                </div>
+                <div class="form-group">
+                    <label for="hourlyPayment">Hourly Payment:</label>
+                    <input type="text" id="hourlyPayment" name="hourlyPayment" class="form-control" value="@Model.HourlyPaymentFormatted" readonly="readonly"/>
+                </div>
+                <div class="form-group">
+                    <label for="hoursWorked">Hours Worked:</label>
+                    <input type="text" id="hoursWorked" name="hoursWorked" class="form-control" placeholder="Enter hours worked" value="@Model.HoursWorked" required/>
+                </div>
+                <div class="form-group">
+                    <label for="totalPayment">Total Payment:</label>
+                    <input type="text" id="totalPayment" name="totalPayment" class="form-control" value="@Model.TotalPaymentFormatted" readonly="readonly"/>
+                </div>
+                <button id="saveButton" type="submit" class="btn btn-primary">Calculate</button>
+            </fieldset>
+        </div>
+    }
+</div>
